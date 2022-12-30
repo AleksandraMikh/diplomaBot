@@ -22,12 +22,21 @@ def fill_the_base():
   i = 0
   for status in db['statuses']:
     student['status'] = status
-    student['last_name'] = last_name_first_name[i][0]
-    student['first_name'] = last_name_first_name[i][1]
-    student['middle_name'] = last_name_first_name[i][2]
+    # student['last_name'] = last_name_first_name[i][0]
+    # student['first_name'] = last_name_first_name[i][1]
+    # student['middle_name'] = last_name_first_name[i][2]
     full_name = ' '.join(last_name_first_name[i])
     db[full_name.lower()] = student
     i += 1
+
+  strange_last_name_first_name = ['бюльбюль оглы полад', 'лионель месси', 'иванов-петров марк-антоний олегович', 'королева андаллов первых людей дейнерис бурерождённая']
+  i = 0
+  for status in db['statuses']:
+    if i < len(strange_last_name_first_name):
+      db[strange_last_name_first_name[i]] = {'status':status}
+      i += 1
+  
+  
   
   
   # db[
