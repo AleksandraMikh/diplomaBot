@@ -1,0 +1,40 @@
+2023-01-10 13:02:59,888 - apscheduler.scheduler - INFO - Scheduler started
+2023-01-10 13:02:59,891 - apscheduler.scheduler - DEBUG - Looking for jobs to run
+2023-01-10 13:02:59,891 - apscheduler.scheduler - DEBUG - No jobs; waiting until a job is added
+2023-01-10 13:02:59,891 - telegram.bot - DEBUG - Entering: get_me
+2023-01-10 13:03:00,333 - telegram.bot - DEBUG - {'can_read_all_group_messages': False, 'supports_inline_queries': False, 'id': 5733735070, 'can_join_groups': True, 'is_bot': True, 'username': 'mikhKittyBot', 'first_name': 'mikh_homework_bot'}
+2023-01-10 13:03:00,333 - telegram.bot - DEBUG - Exiting: get_me
+2023-01-10 13:03:00,334 - telegram.ext.updater - DEBUG - Bot:5733735070:dispatcher - started
+2023-01-10 13:03:00,334 - telegram.ext.updater - DEBUG - Bot:5733735070:updater - started
+2023-01-10 13:03:00,334 - telegram.ext.updater - DEBUG - Updater thread started (polling)
+2023-01-10 13:03:00,335 - telegram.ext.updater - DEBUG - Start network loop retry bootstrap del webhook
+2023-01-10 13:03:00,335 - telegram.ext.updater - DEBUG - Deleting webhook
+2023-01-10 13:03:00,335 - telegram.bot - DEBUG - Entering: delete_webhook
+2023-01-10 13:03:00,335 - telegram.ext.updater - DEBUG - Waiting for Dispatcher and polling to start
+2023-01-10 13:03:00,337 - telegram.ext.dispatcher - DEBUG - Dispatcher started
+2023-01-10 13:03:00,469 - telegram.bot - DEBUG - True
+2023-01-10 13:03:00,469 - telegram.bot - DEBUG - Exiting: delete_webhook
+2023-01-10 13:03:00,469 - telegram.ext.updater - DEBUG - Bootstrap done
+2023-01-10 13:03:00,470 - telegram.ext.updater - DEBUG - Start network loop retry getting Updates
+2023-01-10 13:03:00,470 - telegram.bot - DEBUG - Entering: get_updates
+2023-01-10 13:03:08,114 - telegram.bot - DEBUG - Getting updates: [279767523]
+2023-01-10 13:03:08,115 - telegram.bot - DEBUG - [<telegram.update.Update object at 0x7ff1b1c2cf40>]
+2023-01-10 13:03:08,115 - telegram.bot - DEBUG - Exiting: get_updates
+2023-01-10 13:03:08,116 - telegram.bot - DEBUG - Entering: get_updates
+2023-01-10 13:03:08,116 - telegram.ext.dispatcher - DEBUG - Processing Update: {'message': {'channel_chat_created': False, 'caption_entities': [], 'new_chat_photo': [], 'entities': [], 'new_chat_members': [], 'delete_chat_photo': False, 'text': 'Петров Пётр Олесевич', 'photo': [], 'date': 1673355788, 'message_id': 1049, 'supergroup_chat_created': False, 'group_chat_created': False, 'chat': {'first_name': 'Александра', 'type': 'private', 'username': 'mikhaidoku', 'last_name': 'Михайловская', 'id': 449087574}, 'from': {'id': 449087574, 'is_bot': False, 'username': 'mikhaidoku', 'last_name': 'Михайловская', 'is_premium': True, 'first_name': 'Александра', 'language_code': 'ru'}}, 'update_id': 279767523}
+2023-01-10 13:03:08,118 - root - INFO - Start searching for db record starts with петров пётр олесевич
+2023-01-10 13:03:08,133 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): kv.replit.com:443
+2023-01-10 13:03:08,299 - urllib3.connectionpool - DEBUG - https://kv.replit.com:443 "GET /v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE2NzM0NjYyOTksImlhdCI6MTY3MzM1NDY5OSwiZGF0YWJhc2VfaWQiOiI2ZDNjNDQ0Yy0xNWJhLTRlNTYtOWY4NC1jYzUyNGQ2ZDJkYzEiLCJ1c2VyIjoiYW1pa2hhaWxvdnNrYWlhIiwic2x1ZyI6ImRpcGxvbWFCb3QifQ.auA-L6FVZ0mk7tMlN3kJGDWsUR-CUcAf12Icg6DYSaiBfFBYZSKKDEy0dte1f9F2ulY8yPyPr-4Hr54Q4TkrKA?prefix=%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2+%D0%BF%D1%91%D1%82%D1%80+%D0%BE%D0%BB%D0%B5%D1%81%D0%B5%D0%B2%D0%B8%D1%87&encode=true HTTP/1.1" 200 0
+2023-01-10 13:03:08,300 - root - INFO - 0 matches found
+2023-01-10 13:03:08,300 - root - INFO - Start searching for db record starts with петров петр олесевич
+2023-01-10 13:03:08,349 - urllib3.connectionpool - DEBUG - https://kv.replit.com:443 "GET /v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE2NzM0NjYyOTksImlhdCI6MTY3MzM1NDY5OSwiZGF0YWJhc2VfaWQiOiI2ZDNjNDQ0Yy0xNWJhLTRlNTYtOWY4NC1jYzUyNGQ2ZDJkYzEiLCJ1c2VyIjoiYW1pa2hhaWxvdnNrYWlhIiwic2x1ZyI6ImRpcGxvbWFCb3QifQ.auA-L6FVZ0mk7tMlN3kJGDWsUR-CUcAf12Icg6DYSaiBfFBYZSKKDEy0dte1f9F2ulY8yPyPr-4Hr54Q4TkrKA?prefix=%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2+%D0%BF%D0%B5%D1%82%D1%80+%D0%BE%D0%BB%D0%B5%D1%81%D0%B5%D0%B2%D0%B8%D1%87&encode=true HTTP/1.1" 200 0
+2023-01-10 13:03:08,350 - root - INFO - 0 matches found
+2023-01-10 13:03:08,355 - root - INFO - Start searching for db record starts with олесевич петров пётр
+2023-01-10 13:03:08,404 - urllib3.connectionpool - DEBUG - https://kv.replit.com:443 "GET /v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE2NzM0NjYyOTksImlhdCI6MTY3MzM1NDY5OSwiZGF0YWJhc2VfaWQiOiI2ZDNjNDQ0Yy0xNWJhLTRlNTYtOWY4NC1jYzUyNGQ2ZDJkYzEiLCJ1c2VyIjoiYW1pa2hhaWxvdnNrYWlhIiwic2x1ZyI6ImRpcGxvbWFCb3QifQ.auA-L6FVZ0mk7tMlN3kJGDWsUR-CUcAf12Icg6DYSaiBfFBYZSKKDEy0dte1f9F2ulY8yPyPr-4Hr54Q4TkrKA?prefix=%D0%BE%D0%BB%D0%B5%D1%81%D0%B5%D0%B2%D0%B8%D1%87+%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2+%D0%BF%D1%91%D1%82%D1%80&encode=true HTTP/1.1" 200 0
+2023-01-10 13:03:08,405 - root - INFO - 0 matches found
+2023-01-10 13:03:08,406 - root - INFO - Start searching for db record starts with олесевич петров петр
+2023-01-10 13:03:08,454 - urllib3.connectionpool - DEBUG - https://kv.replit.com:443 "GET /v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE2NzM0NjYyOTksImlhdCI6MTY3MzM1NDY5OSwiZGF0YWJhc2VfaWQiOiI2ZDNjNDQ0Yy0xNWJhLTRlNTYtOWY4NC1jYzUyNGQ2ZDJkYzEiLCJ1c2VyIjoiYW1pa2hhaWxvdnNrYWlhIiwic2x1ZyI6ImRpcGxvbWFCb3QifQ.auA-L6FVZ0mk7tMlN3kJGDWsUR-CUcAf12Icg6DYSaiBfFBYZSKKDEy0dte1f9F2ulY8yPyPr-4Hr54Q4TkrKA?prefix=%D0%BE%D0%BB%D0%B5%D1%81%D0%B5%D0%B2%D0%B8%D1%87+%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2+%D0%BF%D0%B5%D1%82%D1%80&encode=true HTTP/1.1" 200 0
+2023-01-10 13:03:08,455 - root - INFO - 0 matches found
+2023-01-10 13:03:08,455 - telegram.bot - DEBUG - Entering: send_message
+2023-01-10 13:03:09,022 - telegram.bot - DEBUG - {'channel_chat_created': False, 'caption_entities': [], 'new_chat_photo': [], 'entities': [], 'new_chat_members': [], 'delete_chat_photo': False, 'text': 'Участник с именем Олесевич Петров Петр   не найден. Если вы ошиблись, отправьте ФИО ещё раз. Если вы не ошиблись при печати имени, свяжитесь с организатором по почте ?????@??.??\n \n А ещё я заметил, что в имени вашего ребёнка есть буква Ë. Я проверил, нет ли совпадений при замене всех Ë на Е, их не нашлось 😔', 'photo': [], 'date': 1673355788, 'message_id': 1050, 'supergroup_chat_created': False, 'group_chat_created': False, 'chat': {'first_name': 'Александра', 'type': 'private', 'username': 'mikhaidoku', 'last_name': 'Михайловская', 'id': 449087574}, 'from': {'id': 5733735070, 'is_bot': True, 'username': 'mikhKittyBot', 'first_name': 'mikh_homework_bot'}}
+2023-01-10 13:03:09,022 - telegram.bot - DEBUG - Exiting: send_message
