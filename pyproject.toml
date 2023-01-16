@@ -13,6 +13,7 @@ urllib3 = "^1.26.12"
 python-telegram-bot = "^13.14"
 Pillow = "^9.3.0"
 telegram = "^0.0.1"
+db = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
 debugpy = "^1.6.2"

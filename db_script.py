@@ -2,66 +2,75 @@ from replit import db
 import diploma_bases
 import subscriptions
 
+GRADE = {
+  '1': {
+    'master_name': '/А.В.Кашкарова/',
+    'master_subscribe': subscriptions.first_grade,
+    'division_rus': 'младшей',
+    'division_en': 'junior'
+  },
+  '2': {
+    'master_name': '/А.А.Мищенко/',
+    'master_subscribe': subscriptions.second_grade,
+    'division_rus': 'младшей',
+    'division_en': 'junior'
+  },
+  '3': {
+    'master_name': '/К.И.Александров/',
+    'master_subscribe': subscriptions.third_grade,
+    'division_rus': 'средней',
+    'division_en': 'middle'
+  },
+  '4': {
+    'master_name': '/Н.С.Борисов/',
+    'master_subscribe': subscriptions.forth_grade,
+    'division_rus': 'старшей',
+    'division_en': 'older'
+  }
+}
+
+diploma1 = {
+  'title': 'диплом I степени',
+  'base_picture': diploma_bases.pink_base,
+  'message': 'диплом I степени',
+  'awarded_for': 'победу',
+}
+diploma2 = {
+  'title': 'диплом II степени',
+  'base_picture': diploma_bases.base_2,
+  'message': 'диплом II степени',
+  'awarded_for': 'успешное выступление',
+}
+diploma3 = {
+  'title': 'диплом III степени',
+  'base_picture': diploma_bases.blue_base,
+  'message': 'диплом III степени',
+  'awarded_for': 'успешное выступление',
+}
+certificate_of_honor1 = {
+  'title': 'похвальный отзыв I степени',
+  'base_picture': diploma_bases.green_base,
+  'message': 'похвальный отзыв I степени',
+  'awarded_for': 'успешное выступление',
+}
+certificate_of_honor2 = {
+  'title': 'похвальный отзыв II степени',
+  'base_picture': diploma_bases.grey_base,
+  'message': 'похвальный отзыв II степени',
+  'awarded_for': 'успешное выступление',
+}
+
+STATUSES = {
+  '1': diploma1,
+  '2': diploma2,
+  '3': diploma3,
+  'ПГ1': certificate_of_honor1,
+  'ПГ2': certificate_of_honor2,
+}
+
 
 def fill_the_base():
-  diploma1 = {
-    'title': 'диплом I степени',
-    'base_picture': diploma_bases.pink_base,
-    'message': 'диплом I степени',
-    'awarded_for':'победу',
-  }
-  diploma2 = {
-    'title': 'диплом II степени',
-    'base_picture': diploma_bases.yellow_base,
-    'message': 'диплом II степени',
-    'awarded_for':'успешное выступление',
-  }
-  diploma3 = {
-    'title': 'диплом III степени',
-    'base_picture': diploma_bases.blue_base,
-    'message': 'диплом III степени',
-    'awarded_for':'успешное выступление',
-  }
-  certificate_of_honor1 = {
-    'title': 'похвальный отзыв I степени',
-    'base_picture': diploma_bases.green_base,
-    'message': 'похвальный отзыв I степени',
-    'awarded_for':'успешное выступление',
-  }
-  certificate_of_honor2 = {
-    'title': 'похвальный отзыв II степени',
-    'base_picture': diploma_bases.grey_base,
-    'message': 'похвальный отзыв II степени',
-    'awarded_for':'успешное выступление',
-  }
 
-  grade = {
-    '1':{'master_name':'/А.В.Кашкарова/',
-        'master_subscribe':subscriptions.first_grade,
-        'division_rus':'младшей',
-        'division_en':'junior'},
-    '2':{'master_name':'/А.А.Мищенко/',
-        'master_subscribe':subscriptions.second_grade,
-        'division_rus':'младшей',
-        'division_en':'junior'},
-    '3':{'master_name':'/К.И.Александров/',
-        'master_subscribe':subscriptions.third_grade,
-        'division_rus':'средней',
-        'division_en':'middle'},
-    '4':{'master_name':'/Н.С.Борисов/',
-        'master_subscribe':subscriptions.forth_grade,
-        'division_rus':'старшей',
-        'division_en':'older'}
-  }
-
-  
-  db['statuses'] = {
-    '1': diploma1,
-    '2': diploma2,
-    '3': diploma3,
-    'ПГ1': certificate_of_honor1,
-    'ПГ2': certificate_of_honor2,
-  }
   last_name_first_name = [['Иванов', 'Иван', 'Иванович'],
                           ['Петров', 'Пётр', 'Петрович'],
                           ['Петров', 'Петр', 'Иванович'],
@@ -69,7 +78,7 @@ def fill_the_base():
                           ['Иванова', 'Анна', 'Ивановна']]
   student = {}
   i = 0
-  for status in db['statuses']:
+  for status in STATUSES:
     student['status'] = status
     student['grade'] = str(i % 4 + 1)
     # student['last_name'] = last_name_first_name[i][0]
@@ -88,18 +97,17 @@ def fill_the_base():
       student['city'] = 'Саратов'
     else:
       student['city'] = 'Белград, Сербия'
-    
+
     db[full_name.lower()] = student
     i += 1
 
   strange_last_name_first_name = [
     'бюльбюль оглы полад', 'сидоров сидор сидорович',
     'иванов-петров марк-антоний олегович',
-    'королева андаллов первых людей дейнерис бурерождённая',
-    'Мијатовић Ђорђе'
+    'королева андаллов первых людей дейнерис бурерождённая', 'Мијатовић Ђорђе'
   ]
   i = 0
-  for status in db['statuses']:
+  for status in STATUSES:
     student['status'] = status
     student['grade'] = str((i + 1) % 4 + 1)
     if 'королева' in strange_last_name_first_name[i]:
