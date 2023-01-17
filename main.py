@@ -1,12 +1,10 @@
 import os
 import logging
-import time
 from telegram.ext import (CommandHandler, Updater, MessageHandler,
                           Filters)  #upm package(python-telegram-bot)
-from telegram import (TelegramError)  # upm package(python-telegram-bot)
-from db_script import fill_the_base, GRADE
+from db_script import fill_the_base
 import db_watch
-from utils import (get_text_for_diploma, find_diploma, get_byte_image)
+from utils import (find_diploma, get_byte_image, delete_white_background)
 
 token = os.environ['TOKEN']
 updater = Updater(token=token)
@@ -53,6 +51,7 @@ def full_name_and_get_diploma(update, context):
 
   (diploma_message, number_of_matches, status,
    diploma_text) = find_diploma(last_name_or_whole_input=' '.join(words))
+  logging.info("Information about student is found and unpacked to full_name_and_get_diploma.")
 
   if status:
     context.bot.send_message(text=diploma_message, chat_id=chat.id)
@@ -71,7 +70,7 @@ def full_name_and_get_diploma(update, context):
 
   if len(words) > 3:
     context.bot.send_message(
-      chat.id, (f"Мы не поняли ваше сообщение, вы написали больше 3 слов."
+      chat.id, (f"Мы не поняли ваше сообщение."
                 f" Введите фамилию, имя и отчество ребёнка через пробел."
                 f" Сейчас вы ввели '{text_low}'. \n Если ФИО вашего ребёнка"
                 f" состоит из более чем трёх слов, попробуйте ввести их"
@@ -83,6 +82,7 @@ def full_name_and_get_diploma(update, context):
     (diploma_message, number_of_matches, status,
      diploma_text) = find_diploma(last_name_or_whole_input=words[1],
                                   first_name=words[0])
+    logging.info("Information about student is found and unpacked to full_name_and_get_diploma.")
 
   if len(words) == 3:
     logging.info("Start searching with swaped 3 words.")
@@ -90,6 +90,7 @@ def full_name_and_get_diploma(update, context):
      diploma_text) = find_diploma(last_name_or_whole_input=words[2],
                                   first_name=words[0],
                                   middle_name=words[1])
+    logging.info("Information about student is found and unpacked to full_name_and_get_diploma.")
 
   if status:
     context.bot.send_message(text=diploma_message, chat_id=chat.id)
@@ -129,3 +130,4 @@ if __name__ == "__main__":
   # fill_the_base()
   # db_watch.watch_the_base()
   main()
+  # delete_white_background()

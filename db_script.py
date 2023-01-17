@@ -31,7 +31,7 @@ GRADE = {
 
 diploma1 = {
   'title': 'диплом I степени',
-  'base_picture': diploma_bases.pink_base,
+  'base_picture': diploma_bases.base_1,
   'message': 'диплом I степени',
   'awarded_for': 'победу',
 }
@@ -43,19 +43,19 @@ diploma2 = {
 }
 diploma3 = {
   'title': 'диплом III степени',
-  'base_picture': diploma_bases.blue_base,
+  'base_picture': diploma_bases.base_3,
   'message': 'диплом III степени',
   'awarded_for': 'успешное выступление',
 }
 certificate_of_honor1 = {
   'title': 'похвальный отзыв I степени',
-  'base_picture': diploma_bases.green_base,
+  'base_picture': diploma_bases.cert_of_honor1_base,
   'message': 'похвальный отзыв I степени',
   'awarded_for': 'успешное выступление',
 }
 certificate_of_honor2 = {
   'title': 'похвальный отзыв II степени',
-  'base_picture': diploma_bases.grey_base,
+  'base_picture': diploma_bases.cert_of_honor2_base,
   'message': 'похвальный отзыв II степени',
   'awarded_for': 'успешное выступление',
 }
@@ -99,12 +99,13 @@ def fill_the_base():
       student['city'] = 'Белград, Сербия'
 
     db[full_name.lower()] = student
+    print('name = ',full_name, 'status = ', status)
     i += 1
 
   strange_last_name_first_name = [
-    'бюльбюль оглы полад', 'сидоров сидор сидорович',
+    'бюльбюль оглы полад', 'петров-водкин сергей',
     'иванов-петров марк-антоний олегович',
-    'королева андаллов первых людей дейнерис бурерождённая', 'Мијатовић Ђорђе'
+    'королева андаллов первых людей дейнерис бурерождённая', 'Мијатовић Ђорђе'.lower()
   ]
   i = 0
   for status in STATUSES:

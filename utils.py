@@ -2,14 +2,15 @@ from typing import Tuple, Optional
 from replit import db
 import logging
 import base64
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 from io import BytesIO
 from db_script import GRADE, STATUSES
 
 
 def get_text_for_diploma(full_name: str, grade: str, gender: str, school: str,
                          city: str, status: str):
-  second_name, first_name, _ = full_name.split()
+  logging.info('Start creating text for diploma.')
+  second_name, first_name, *_ = full_name.split()
   strings = ("награждается", f"учени{gender} {grade} класса", f"{school}",
              f"({city})", f"{second_name} {first_name}",
              f"за {STATUSES[status]['awarded_for']}",
@@ -17,6 +18,7 @@ def get_text_for_diploma(full_name: str, grade: str, gender: str, school: str,
              f"for success in {GRADE[grade]['division_en']} division",
              f"Старший по параллели {grade} класса",
              f"{GRADE[grade]['master_name']}")
+  logging.info('Text for diploma has been creted.')
   return strings
 
 
@@ -30,10 +32,7 @@ def find_diploma(
     Status is str from db['statuses']. 
     If student does't exist in db or is not unique status is None.
     '''
-  #TODO1: дописать формирование текста для диплома если найдено ровно
-  #одно совпадение, использовать отдельную функцию (?)
-  #возвращать текст в кортеже
-  #TODO2: возвращать не кортеж, а словарь
+  #TODO: возвращать не кортеж, а словарь (?)
 
   search_string = (f"{last_name_or_whole_input.lower()} "
                    f"{first_name.lower()} {middle_name.lower()}")
@@ -72,7 +71,6 @@ def find_diploma(
                f' {str(STATUSES[db[matches[0]]["status"]]["message"])}.'
                f' Приступаем к формированию документа, это может занять'
                f' несколько минут.')
-    #TODO: дописать здесь формирование текста для диплома
     diploma_text = get_text_for_diploma(full_name=matches[0], **db[matches[0]])
     return (message, len(matches), db[matches[0]]["status"], diploma_text)
 
@@ -88,9 +86,6 @@ def get_byte_image(
   font_small = ImageFont.truetype("arial.ttf", 25)
   font_huge = ImageFont.truetype("arial.ttf", 50)
   font_sub = ImageFont.truetype("Bahnschrift.ttf", 14)
-  # w, h = add_text.textsize(msg)
-  # box=(330, 850, 460, 920)
-  #TODO: написать здесь рисование правильного текста
   i = 0
   for text in diploma_text:
     if i < 4:
@@ -131,23 +126,28 @@ def get_byte_image(
         fill=('#000000'),
         font=font_sub,
       )
+    logging.info(f"Added {i} string.")
     i += 1
 
   _, grade, _ = diploma_text[1].split()
   imgstr = GRADE[grade]['master_subscribe']
-  if grade == '2':
-    subscription = Image.open(BytesIO(base64.b64decode(imgstr)))
-    subscription.thumbnail(size=(230, 70))
-    image.paste(im=subscription, box=(330, 850))
-  else:
-    add_text.text(
-      (300, 868),
-      imgstr,
-      fill=('#000000'),
-      font=font_sub,
-    )
-
+  subscription = Image.open(BytesIO(base64.b64decode(imgstr)))
+  subscription.thumbnail(size=(230, 70))
+  image = image.convert('RGBA')
+  sub_rgba = delete_white_background(subscription)
+  image.alpha_composite(im=sub_rgba, dest=(330, 850))
   byteIO = BytesIO()
   image.save(byteIO, format='PNG')
   byteArr = byteIO.getvalue()
   return byteArr
+
+
+def delete_white_background(im: Image.Image) -> Image.Image:
+  '''Function makes white background transparent.
+  '''
+  logging.info("Start delete_white_background function.")
+  grey_im = im.convert('L')
+  grey_im = ImageOps.invert(grey_im)
+  im.putalpha(grey_im)
+  logging.info("Successfully completed delete_white_background function.")
+  return im
