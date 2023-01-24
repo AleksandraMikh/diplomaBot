@@ -11,8 +11,8 @@ updater = Updater(token=token)
 URL = 'https://api.thecatapi.com/v1/images/search'
 
 logging.basicConfig(
-  # filename='example.log',
-  # filemode='w',
+  filename='example.log',
+  filemode='w',
   format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
   level=logging.DEBUG)
 
